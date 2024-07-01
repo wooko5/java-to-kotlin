@@ -1,6 +1,5 @@
 package com.kotlin_basic
 
-import java.util.*
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.random.Random
@@ -87,18 +86,18 @@ fun main() {
 
 
     //Array
-    val array  = intArrayOf(1, 2, 3)
+    val array = intArrayOf(1, 2, 3)
     array[0] = 6
 
     try {
         var arr = array[4]
-    }catch (e : ArrayIndexOutOfBoundsException){
+    } catch (e: ArrayIndexOutOfBoundsException) {
         println(e)
     }
 
     //null safety
-    var nullSafey : String? = null
-    var test : String = ""
+    var nullSafey: String? = null
+    var test: String = ""
     if (nullSafey != null) {
         test = nullSafey
     }
@@ -116,12 +115,21 @@ fun main() {
     //클래스
     val john = Person("John", 30)
     println(john.toString())
+    println(john.hobby)
 }
 
 class Person(
     val name: String,
     var age: Int
-)
+) {
+    var hobby = "축구"
+        private set //Person의 속성인 hobby의 setter를 제어할 수 있음
+        get() = "취미 : $field"
+
+    init {
+        println("init")
+    }
+}
 
 class Agent(
     private val name: String,
